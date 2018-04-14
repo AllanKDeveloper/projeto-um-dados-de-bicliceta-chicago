@@ -28,11 +28,7 @@ input("Aperte Enter para continuar...")
 # TAREFA 1
 # TODO: Imprima as primeiras 20 linhas usando um loop para identificar os dados.
 print("\n\nTAREFA 1: Imprimindo as primeiras 20 amostras")
-limit = 20
-for index, item in enumerate(data_list):
-    print(index, item)
-    if index == limit:
-        break
+for index, intem in enumerate(data_list[:20]):
 
 # Vamos mudar o data_list para remover o cabeçalho dele.
 data_list = data_list[1:]
@@ -54,15 +50,15 @@ for _, item in zip(range(20), data_list):
 input("Aperte Enter para continuar...")
 # TAREFA 3
 # TODO: Crie uma função para adicionar as colunas(features) de uma lista em outra lista, na mesma ordem
-"""
-Função column_to_list.
-Argumentos:
-    data: lista.
-    index: index da lista.
-Retorna:
-    Uma lista com os gêneros
-"""
 def column_to_list(data, index):
+	"""
+	Função column_to_list.
+	Argumentos:
+	    data: lista.
+	    index: index da lista.
+	Retorna:
+	    Uma lista com os gêneros
+	"""
     column_list = []
     for i, item in enumerate(data):
         column_list.append(item[index])
@@ -105,14 +101,14 @@ input("Aperte Enter para continuar...")
 # TAREFA 5
 # TODO: Crie uma função para contar os gêneros. Retorne uma lista.
 # Isso deveria retornar uma lista com [count_male, count_female] (exemplo: [10, 15] significa 10 Masculinos, 15 Femininos)
-"""
-Função count_gender.
-Argumentos:
-    data_list: lista.
-Retorna:
-    Uma lista com o valor do gênero masculina e feminino, em sequência.
-"""
 def count_gender(data_list):
+	"""
+	Função count_gender.
+	Argumentos:
+	    data_list: lista.
+	Retorna:
+	    Uma lista com o valor do gênero masculina e feminino, em sequência.
+	"""
     male = 0
     female = 0
     for index, item in enumerate(data_list):
@@ -137,14 +133,14 @@ input("Aperte Enter para continuar...")
 # TAREFA 6
 # TODO: Crie uma função que pegue o gênero mais popular, e retorne este gênero como uma string.
 # Esperamos ver "Masculino", "Feminino", ou "Igual" como resposta.
-"""
-Função most_popular_gender.
-Argumentos:
-    data_list: lista.
-Retorna:
-    Retorna uma string com o gênero que mais aparece na lista.
-"""
 def most_popular_gender(data_list):
+	"""
+	Função most_popular_gender.
+	Argumentos:
+	    data_list: lista.
+	Retorna:
+	    Retorna uma string com o gênero que mais aparece na lista.
+	"""
     answer = ""
     male = 0
     female = 0
@@ -163,8 +159,7 @@ def most_popular_gender(data_list):
     elif male < female:
         answer = "Feminino"
         maior = female
-
-    if maior < equal:
+    elif female == male:
         answer = "Igual"
 
     return answer
