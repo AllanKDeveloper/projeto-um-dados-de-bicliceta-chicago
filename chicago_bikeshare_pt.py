@@ -7,8 +7,8 @@ import matplotlib.pyplot as plt
 # Vamos ler os dados como uma lista
 print("Lendo o documento...")
 with open("chicago.csv", "r") as file_read:
-    reader = csv.reader(file_read)
-    data_list = list(reader)
+	reader = csv.reader(file_read)
+	data_list = list(reader)
 print("Ok!")
 
 # Vamos verificar quantas linhas nós temos
@@ -29,6 +29,7 @@ input("Aperte Enter para continuar...")
 # TODO: Imprima as primeiras 20 linhas usando um loop para identificar os dados.
 print("\n\nTAREFA 1: Imprimindo as primeiras 20 amostras")
 for index, intem in enumerate(data_list[:20]):
+	print(intem)
 
 # Vamos mudar o data_list para remover o cabeçalho dele.
 data_list = data_list[1:]
@@ -42,7 +43,7 @@ input("Aperte Enter para continuar...")
 
 print("\nTAREFA 2: Imprimindo o gênero das primeiras 20 amostras")
 for _, item in zip(range(20), data_list):
-    print(item[-2])
+	print(item[-2])
 
 # Ótimo! Nós podemos pegar as linhas(samples) iterando com um for, e as colunas(features) por índices.
 # Mas ainda é difícil pegar uma coluna em uma lista. Exemplo: Lista com todos os gêneros
@@ -54,16 +55,16 @@ def column_to_list(data, index):
 	"""
 	Função column_to_list.
 	Argumentos:
-	    data: lista.
-	    index: index da lista.
+		data: lista.
+		index: index da lista.
 	Retorna:
-	    Uma lista com os gêneros
+		Uma lista com os gêneros
 	"""
-    column_list = []
-    for i, item in enumerate(data):
-        column_list.append(item[index])
-    # Dica: Você pode usar um for para iterar sobre as amostras, pegar a feature pelo seu índice, e dar append para uma lista
-    return column_list
+	column_list = []
+	for i, item in enumerate(data):
+		column_list.append(item[index])
+	# Dica: Você pode usar um for para iterar sobre as amostras, pegar a feature pelo seu índice, e dar append para uma lista
+	return column_list
 
 
 # Vamos checar com os gêneros se isso está funcionando (apenas para os primeiros 20)
@@ -83,10 +84,11 @@ input("Aperte Enter para continuar...")
 male = 0
 female = 0
 for index, item in enumerate(data_list):
-        if item[-2] == "Male":
-          male += 1
-        elif item[-2] == "Female":
-          female += 1
+	if item[-2] == "Female" or item[-2] == "Male":
+		if item[-2] == "Male":
+		  male += 1
+		elif item[-2] == "Female":
+		  female += 1
 
 # Verificando o resultado
 print("\nTAREFA 4: Imprimindo quantos masculinos e femininos nós encontramos")
@@ -105,18 +107,18 @@ def count_gender(data_list):
 	"""
 	Função count_gender.
 	Argumentos:
-	    data_list: lista.
+		data_list: lista.
 	Retorna:
-	    Uma lista com o valor do gênero masculina e feminino, em sequência.
+		Uma lista com o valor do gênero masculina e feminino, em sequência.
 	"""
-    male = 0
-    female = 0
-    for index, item in enumerate(data_list):
-        if item[-2] == "Male":
-          male += 1
-        elif item[-2] == "Female":
-          female += 1
-    return [male, female]
+	male = 0
+	female = 0
+	for index, item in enumerate(data_list):
+		if item[-2] == "Male":
+		  male += 1
+		elif item[-2] == "Female":
+		  female += 1
+	return [male, female]
 
 
 print("\nTAREFA 5: Imprimindo o resultado de count_gender")
@@ -137,32 +139,30 @@ def most_popular_gender(data_list):
 	"""
 	Função most_popular_gender.
 	Argumentos:
-	    data_list: lista.
+		data_list: lista.
 	Retorna:
-	    Retorna uma string com o gênero que mais aparece na lista.
+		Retorna uma string com o gênero que mais aparece na lista.
 	"""
-    answer = ""
-    male = 0
-    female = 0
-    equal = 0
-    for index, item in enumerate(data_list):
-        if item[-2] == "Male":
-            male += 1
-        elif item[-2] == "Female":
-            female += 1
-        else:
-            equal += 1
+	answer = ""
+	male = 0
+	female = 0
+	equal = 0
+	for index, item in enumerate(data_list):
+		if item[-2] == "Male":
+			male += 1
+		elif item[-2] == "Female":
+			female += 1
 
-    if male > female:
-        answer = "Masculino"
-        maior = male
-    elif male < female:
-        answer = "Feminino"
-        maior = female
-    elif female == male:
-        answer = "Igual"
+	if male > female:
+		answer = "Masculino"
+		maior = male
+	elif male < female:
+		answer = "Feminino"
+		maior = female
+	elif female == male:
+		answer = "Igual"
 
-    return answer
+	return answer
 
 
 print("\nTAREFA 6: Qual é o gênero mais popular na lista?")
@@ -194,10 +194,10 @@ types = ["Subscriber", "Customer"]
 subs = 0
 customer = 0
 for index, item in enumerate(data_list):
-    if item[-3] == "Subscriber":
-      subs += 1
-    elif item[-3] == "Customer":
-      customer += 1
+	if item[-3] == "Subscriber":
+	  subs += 1
+	elif item[-3] == "Customer":
+	  customer += 1
 quantity = [male, customer]
 y_pos = list(range(len(types)))
 plt.bar(y_pos, quantity)
@@ -236,27 +236,27 @@ sum_of_numbers = 0
 median_list = []
 
 for index, value in enumerate(data_list):
-    if not min_trip:
-        min_trip = int(value[2])
-    elif int(value[2]) < min_trip:
-        min_trip = int(value[2])
-    if not max_trip:
-        max_trip = int(value[2])
-    elif int(value[2]) > max_trip:
-        max_trip = int(value[2])
-    counter += 1
-    sum_of_numbers += int(value[2])
-    median_list.append(int(value[2]))
+	if not min_trip:
+		min_trip = int(value[2])
+	elif int(value[2]) < min_trip:
+		min_trip = int(value[2])
+	if not max_trip:
+		max_trip = int(value[2])
+	elif int(value[2]) > max_trip:
+		max_trip = int(value[2])
+	counter += 1
+	sum_of_numbers += int(value[2])
+	median_list.append(int(value[2]))
 
-mean_trip = sum_of_numbers / counter
+mean_trip = round(sum_of_numbers / counter)
 
 n = len(median_list)
 if n < 1:
-    median_trip = None
+	median_trip = None
 if n % 2 == 1:
-    median_trip = sorted(median_list)[n//2]
+	median_trip = sorted(median_list)[n//2]
 else:
-    median_trip = sum(sorted(median_list)[n//2-1:n//2+1])/2.0
+	median_trip = sum(sorted(median_list)[n//2-1:n//2+1])/2.0
 
 print("\nTAREFA 9: Imprimindo o mínimo, máximo, média, e mediana")
 print("Min: ", min_trip, "Max: ", max_trip, "Média: ", mean_trip, "Mediana: ", median_trip)
@@ -275,7 +275,7 @@ input("Aperte Enter para continuar...")
 start_stations = []
 
 for index, value in enumerate(data_list):
-    start_stations.append(value[3])
+	start_stations.append(value[3])
 
 user_types = set(start_stations)
 
@@ -300,17 +300,17 @@ print("Você vai encarar o desafio? (yes ou no)")
 answer = "yes"
 
 def count_items(column_list):
-    item_types = []
-    item_types = set(column_list)
-    count_items = [column_list.count(list(item_types)[0]), column_list.count(list(item_types)[1]), column_list.count(list(item_types)[2])]
-    return item_types, count_items
+	item_types = []
+	item_types = set(column_list)
+	count_items = [column_list.count(list(item_types)[0]), column_list.count(list(item_types)[1]), column_list.count(list(item_types)[2])]
+	return item_types, count_items
 
 if answer == "yes":
-    # ------------ NÃO MUDE NENHUM CÓDIGO AQUI ------------
-    column_list = column_to_list(data_list, -2)
-    types, counts = count_items(column_list)
-    print("\nTAREFA 11: Imprimindo resultados para count_items()")
-    print("Tipos:", types, "Counts:", counts)
-    assert len(types) == 3, "TAREFA 11: Há 3 tipos de gênero!"
-    assert sum(counts) == 1551505, "TAREFA 11: Resultado de retorno incorreto!"
-    # -----------------------------------------------------
+	# ------------ NÃO MUDE NENHUM CÓDIGO AQUI ------------
+	column_list = column_to_list(data_list, -2)
+	types, counts = count_items(column_list)
+	print("\nTAREFA 11: Imprimindo resultados para count_items()")
+	print("Tipos:", types, "Counts:", counts)
+	assert len(types) == 3, "TAREFA 11: Há 3 tipos de gênero!"
+	assert sum(counts) == 1551505, "TAREFA 11: Resultado de retorno incorreto!"
+	# -----------------------------------------------------
